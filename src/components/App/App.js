@@ -4,13 +4,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ComicDen from '../ComicDen/comicden';
 import Login from '../Login/login';
 import Preferences from '../Preferences/preferences';
+import useToken from './useToken';
 
 
 function App() {
   
-  const [token, setToken] = useState();
+  const { token, setToken } = useToken();
 
-  if (token) {
+  if (!token) {
     return <Login setToken={setToken} />;
   }
 
